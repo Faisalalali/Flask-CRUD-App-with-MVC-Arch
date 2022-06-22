@@ -11,9 +11,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 migrate = Migrate(app, db)
+
+
 @app.before_first_request
 def create_tables():
     db.create_all()
+
 
 app.register_blueprint(user_bp, url_prefix='/users')
 
@@ -22,11 +25,12 @@ app.register_blueprint(user_bp, url_prefix='/users')
 def index():
     return render_template('index.html')
 
-@app.route('/data/create', methods=['GET','POST'])
+
+@app.route('/data/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'GET':
         return render_template('createpage.html')
-    
+
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
@@ -36,16 +40,42 @@ def create():
         db.session.commit()
         return redirect(url_for('index'))
 
+
 @app.route('/data')
 def RetrieveDataList():
     users = User.query.all()
-    return render_template('datalist.html',employees = users)
+    return render_template('datalist.html', users=users)
+
 
 @app.route('/data/<int:id>')
 def RetrieveSingleUser(id):
     user = User.query.filter_by(id=id).first()
     if user:
         return render_template('data.html', user=user)
+    return f"Employee with id {id} Doenst exist"
+
+@app.route('/data/update', methods=['GET','POST'])
+def updateSelect():
+    if request.method == 'GET':
+        return render_template('update_select.html')
+    if request.method == 'POST':
+        id = request.form['id']
+        return redirect(url_for('update', id=id))
+
+@app.route('/data/<int:id>/update', methods=['GET','POST'])
+def update(id):
+    user = User.query.filter_by(id=id).first()
+    if request.method == "POST":
+        if user:
+            user.name = request.form['name']
+            user.email = request.form['email']
+            user.password = request.form['password']
+
+            db.session.add(user)
+            db.session.commit()
+            return redirect(url_for('RetrieveSingleUser', id=id))
+        return f"Employee with id {id} Does not exist"
+    return render_template('update.html', user=user)
 
 if __name__ == '__main__':
     app.debug = True

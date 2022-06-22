@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Register</title>
-    <link rel="stylesheet" href="static/css/style.css" />
-  </head>
-
-  <body>
-    <div id="register">
-      <div class="limit center border center form">
-        <form class="hight" action="/register" method="post">
-          <h3>Register</h3>
-          <input type="text" name="username" placeholder="Username" />
-          <input type="text" name="email" placeholder="Email" />
-          <input type="password" name="password" placeholder="Password" />
-          <input type="submit" value="Register" />
-        </form>
-        <button id="loginButton" class="link">Login</button>
-      </div>
-    <script src="static/js/script.js"></script>
-  </body>
-</html>
+{% extends "layout.html" %} {% block body %}
+<div class="center limit border">
+  <a href="/data/create">Create</a><br />
+  <a href="/data">View All</a><br />
+  <a href="/data/update">Update</a><br />
+</div>
+<script src="static/js/script.js"></script>
+{% endblock %}
