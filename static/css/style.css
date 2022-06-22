@@ -19,6 +19,7 @@ form {
   height: 100%;
   margin: 0 10rem 0 10rem;
 }
+form > * > input,
 form input {
   width: 20rem;
   max-width: 90%;
@@ -27,7 +28,13 @@ form input {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 0 10px;
+  outline: 0;
 }
+form > * > input:invalid,
+form input:invalid {
+  border: 1px solid red;
+}
+
 .center {
   display: flexbox;
   justify-content: center;

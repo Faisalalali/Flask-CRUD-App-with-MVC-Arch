@@ -2,11 +2,12 @@
 
 <form action="" method="POST">
   <h3>Create New User</h3>
-  <p>ID <input type="integer" name="user_id" /></p>
-  <p>name <input type="text" name="name" /></p>
-  <p>email <input type="email" name="email" pattern=".+@(gmail|aas|hotmail)((\.com)|(\.sa)|(\.net))+"/></p>
-  <p>password <input type="password" name="password"></p>
+  <p>ID <input disabled type="number" name="user_id" value="{{ user_id }}"/></p>
+  <p>name <input required type="text" name="name" /></p>
+  <p>email <input required type="email" name="email" pattern=".+@(gmail|aas|hotmail)((\.com)|(\.sa)|(\.net))+"/></p>
+  <p>password <input required type="password" name="password"></p>
+  <p>phone <input type="integer" name="phone" pattern="((\+?9665)|(05))?\d{8}" title="Phone numebr should be written like: 05xxxxxxxx or +9665xxxxxxxx"></p>
   <p><input type="submit" value="Submit" /></p>
 </form>
-<a href="/">Return to Main</a>
+<a href="/users/">Return to Main</a>
 {% endblock %}

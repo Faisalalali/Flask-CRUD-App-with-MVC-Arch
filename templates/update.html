@@ -1,11 +1,14 @@
 {% extends "layout.html" %} {% block body %}
 <div class="center limit border">
   <form action="" method="post">
-    <p>name <input type="text" name="name" value="{{ user.name }}"></p>
-    <p>email <input type="text" name="email" value="{{ user.email }}"></p>
-    <p>password <input type="text" name="password" value="{{ user.password }}"></p>
+    <h3>Update User Information</h3>
+    <p>ID <input type="number" name="id" value="{{ user.user_id }}" disabled></p>
+    <p>Name <input type="text" name="name" value="{{ user.name }}"></p>
+    <p>Email <input type="text" name="email" value="{{ user.email }}"></p>
+    <p>Password <input type="text" name="password" value="{{ user.password }}"></p>
+    <p>Phone <input type="text" name="phone" value="{{ user.phone }}"></p>
     <p><input type="submit" value="Update"></p>
   </form>
 </div>
-<a href="/">Return to Main</a>
+<a href="/users/">Return to Main</a>
 {% endblock %}
