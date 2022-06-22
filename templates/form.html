@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block body %}
+<div id="register">
+  <div class="limit center border center form">
+    <form class="hight" action="/register" method="post">
+      <h3>Register</h3>
+      <input type="text" name="username" placeholder="Username" />
+      <input type="text" name="email" placeholder="Email" />
+      <input type="password" name="password" placeholder="Password" />
+      <input type="submit" value="Register" />
+    </form>
+    <button id="loginButton" class="link">Login</button>
+  </div>
+</div>
+
+<div id="login" hidden>
+  <div class="limit center border center form">
+    <form class="hight2" action="/login" method="post">
+      <h3>Login</h3>
+      <input type="text" name="email" placeholder="Email" />
+      <input type="password" name="password" placeholder="Password" />
+      <input type="submit" value="Login" />
+    </form>
+    <button id="registerButton" class="link">Register</button>
+  </div>
+</div>
+
+{% endblock %}
