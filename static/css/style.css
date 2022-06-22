@@ -14,9 +14,10 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 100%;
+  align-items: right;
+  /* width: 100%; */
   height: 100%;
+  margin: 0 10rem 0 10rem;
 }
 form input {
   width: 20rem;
@@ -51,4 +52,20 @@ button.link {
   background: none;
   border: none;
   width: 100%;
+}
+div.center a {
+  font-size: 20px;
+  margin-left: 30%;
+}
+div.center {
+  padding-top: 5%;
+  margin-top: 5%;
+  padding-bottom: 5%;
+  margin-bottom: 5%;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }

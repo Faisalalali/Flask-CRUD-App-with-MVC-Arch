@@ -46,6 +46,13 @@ def RetrieveDataList():
     users = User.query.all()
     return render_template('datalist.html', users=users)
 
+@app.route('/data/view', methods=['GET','POST'])
+def viewSelect():
+    if request.method == 'GET':
+        return render_template('view_select.html')
+    if request.method == 'POST':
+        id = request.form['id']
+        return redirect(url_for('RetrieveSingleUser', id=id))
 
 @app.route('/data/<int:id>')
 def RetrieveSingleUser(id):
@@ -76,6 +83,26 @@ def update(id):
             return redirect(url_for('RetrieveSingleUser', id=id))
         return f"Employee with id {id} Does not exist"
     return render_template('update.html', user=user)
+
+
+@app.route('/data/delete', methods=['GET','POST'])
+def deleteSelect():
+    if request.method == 'GET':
+        return render_template('delete_select.html')
+    if request.method == 'POST':
+        id = request.form['id']
+        return redirect(url_for('delete', id=id))
+
+@app.route('/data/<int:id>/delete', methods=['GET','POST'])
+def delete(id):
+    user = User.query.filter_by(id=id).first()
+    if request.method == "POST":
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+            return redirect(url_for('RetrieveDataList'))
+        return f"Employee with id {id} Does not exist"
+    return render_template('delete.html', user=user)
 
 if __name__ == '__main__':
     app.debug = True

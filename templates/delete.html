@@ -1,0 +1,9 @@
+{% extends "layout.html" %} {% block body %}
+<div class="limit center border">
+    <form action="" method="post">
+        Click YES to confirm deletion of {{user.name}}
+        <input type="submit" value="YES">
+        <a href="/data">Cancel</a>
+    </form>
+</div>
+{% endblock %}
