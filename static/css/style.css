@@ -48,7 +48,8 @@ form input:invalid {
 }
 .limit {
   margin: auto;
-  width: 50%;
+  min-width: 10rem;
+  max-width: 40rem;
   padding: 0 10px;
 }
 .border {
