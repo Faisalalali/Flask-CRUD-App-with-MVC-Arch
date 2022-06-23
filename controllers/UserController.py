@@ -1,4 +1,3 @@
-import email
 from flask import render_template, request, redirect, url_for, abort
 
 from models.User import User
@@ -84,7 +83,7 @@ def delete(user_id):
         return render_template('delete.html', user=user)
     elif request.method == 'POST':
         user = User.query.get(user_id)
-        # TODO fix "is already attached to session '2' (this is '3')"
+        user = db.session.merge(user)
         db.session.delete(user)
         db.session.commit()
 
