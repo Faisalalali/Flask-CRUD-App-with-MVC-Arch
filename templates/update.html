@@ -2,11 +2,11 @@
 <div class="center limit border">
   <form action="" method="post">
     <h3>Update User Information</h3>
-    <p>ID <input type="number" name="id" value="{{ user.user_id }}" disabled></p>
-    <p>Name <input type="text" name="name" value="{{ user.name }}"></p>
-    <p>Email <input type="text" name="email" value="{{ user.email }}"></p>
-    <p>Password <input type="text" name="password" value="{{ user.password }}"></p>
-    <p>Phone <input type="text" name="phone" value="{{ user.phone }}"></p>
+    <p>ID <input required type="number" name="id" value="{{ user.user_id }}" disabled></p>
+    <p>Name <input required type="text" name="name" value="{{ user.name }}"></p>
+    <p>Email <input required type="text" name="email" value="{{ user.email }}"></p>
+    <p>Password <input required type="text" name="password" value="{{ user.password }}"></p>
+    <p>Phone <input re type="text" name="phone" value="{{ user.phone }}" pattern="((\+?9665)|(05))?\d{8}" title="Phone numebr should be written like: 05xxxxxxxx or +9665xxxxxxxx"></p>
     <p><input type="submit" value="Update"></p>
   </form>
 </div>
